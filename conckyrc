@@ -1,0 +1,50 @@
+conky.config = {
+    alignment = 'top_right',
+    background = false,
+    border_width = 0,
+    default_color = '#FFF',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    extra_newline = false,
+    font = 'OpenSans:size=14',
+    gap_x = 15,
+    gap_y = 15,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    override_utf8_locale = true,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_transparent = true,
+    own_window_type = 'desktop',
+    stippled_borders = 0,
+    update_interval = 1.0,
+    uppercase = false,
+    use_xft = true,
+    font = "Default:size=10",
+    color1 = 'ffc851',
+    color2 = '6ccef5',
+    color3 = 'b0b1b2',
+    color4 = 'ffffff'
+}
+
+conky.text = [[
+${font Default:size=20}${color1}-----${color4}-----${color1}-----${color4}-----${color1}------${font}${color}
+${image ~/.conky/Bitcoin/font.png -s}
+${goto 9}${voffset -8}${cpugraph cpu1 30,254 ffc851 ffc851 -t}
+${goto 9}${voffset -11}${cpugraph cpu2 30,254 ffc851 ffc851 -t}
+${voffset -70}${font Default:size=10}   ${cpu cpu1} %${font}${goto 84}${freq 1} Mhz${alignr 15}${font Default:size=10}${hwmon 1 temp 2}° C${font}
+${voffset 20} ${font DDefault:size=10}  ${cpu cpu2}%${font}${goto 84}${freq 2} Mhz ${alignr 15}${font Default:size=10}${hwmon 1 temp 3}° C${font}
+
+${font Default:size=20}-----${color1}-----${color4}-----${color1}-----${color4}------${font}
+${voffset 0}${color1}Swap: ${color4}${font Default:bold:size=8}${swapperc}%${font}${goto 74}${voffset -3}${color1}Free: ${color4}${font Default:bold:size=8}${swapfree}${font}${goto 170}${voffset -3}${color1}Used: ${color4}${font Default:bold:size=8}${swap}${font}
+${font Default:size=10}${color1}IP:$font${color4}${if_existing /proc/net/route wlp6s0}${addr wlp6s0}${else}${if_existing /proc/net/route enp4s0}${addr enp4s0}${else}- - - -${endif}${endif}        ${color1}MAC:${color4}
+${font Default:size=20}${color1}-----${color4}-----${color1}-----${color4}-----${color1}------${font}
+${font Default:size=10}${color1}Bitcoin${font Default:size=10}${color3} (BTC)${color}${goto 220}${font Default:size=10}Rank:${execi 10 sed '4q;d' ~/.conky/Bitcoin/bitcoin.txt}
+${font Default:size=10}${execi 10 sed '1q;d' ~/.conky/Bitcoin/bitcoin.txt}${font Default:bold:size=10} USD ${font}${goto 215}(${execi 10 sed '2q;d' ~/.conky/Bitcoin/bitcoin.txt})${color}
+${font Default:size=20}-----${color1}-----${color4}-----${color1}-----${color4}------${font}
+Yo ca conky ${color1}seveeeere
+]]
