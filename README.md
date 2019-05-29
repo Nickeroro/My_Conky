@@ -1,8 +1,8 @@
 ## My_Conky
 
-# Installation
+### Installation
 
-Rename `conky` as `.conky'
+Rename `conky` as `.conky`
 ```bash
 cp conky .conky && rm -rf conky
 ```
